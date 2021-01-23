@@ -86,6 +86,14 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Music and the effects on the influenced brain',
+    date: 'November 22 2047',
+    firstParagraph: "It's always been a fascination how the brain can perceive sound and affect human emotion and even sensation. Many reports, anecdotal and otherwise have given insight on certain types of music being able to send goosebumps through one's body",
+    secondParagraph: "Well, it guess it seems this is all I've been able to come up with for this portion of the assignment. Better luck next time. But I'll just keep going and practicing this freestyle thing. Or really I just want to play on my new mechanical keyboard. Clickity clackity cluckity claCK. Yes, that was fun. Also, every key I press sends a ripple effect throughout the keyboard with lights that have a blue tone. Blue isn't my favorite color but it is definitely soothing. It's crazy how colors can also affect the human psyche. Wow that was a fun couple tangents. Now come with me and let's wrap this up on the third paragraph.",
+    thirdParagraph: "Hello and welcome again friend. I'll make this short and sweet. This unit has proven quite difficult for someone with my type of brain. Which type you ask? Not sure but if I was diagnosed I feel like they'd say `You good sir have Andre Brain` and although that is not a true scientifical disorder it still is infact true. And so like many others who have to face bitter and shallow truths many a time, day after day, I also had to face this truth. So remember folks, next time you see an article written by Andre Orellana save yourself some time and do not read it thank you. "
+
   }
 ];
 
@@ -123,6 +131,11 @@ function articleMaker(title,date,oneP,twoP,threeP) {
   let thirdP = document.createElement('p')
   let span = document.createElement('span')
 
+  span.textContent = "+"
+  span.classList.add('expandButton')
+
+  span.addEventListener('hover')
+
   h2.textContent = title;
   p.textContent = date;
   firstP.textContent = oneP;
@@ -137,7 +150,7 @@ function articleMaker(title,date,oneP,twoP,threeP) {
   artContainer.appendChild(thirdP)
   artContainer.appendChild(span)
 
-  return artContainer
+  return artContainer 
 }
   // Adding data
   let articles = data.map((i) => { 
