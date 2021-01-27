@@ -1,12 +1,12 @@
 // This is the data we will be using, study it but don't change anything, yet.
 
 let menuItems = [
-  'Students',
-  'Faculty',
+  "Students",
+  "Faculty",
   "What's New",
-  'Tech Trends',
-  'Music',
-  'Log Out'
+  "Tech Trends",
+  "Music",
+  "Log Out",
 ];
 
 /* 
@@ -20,6 +20,7 @@ let menuItems = [
 
   The 'menuMaker' takes an array of menu items as its only argument.
 
+
   Step 2: Inside the function, iterate over the array creating a list item <li> element for each item in the array.
   Add those items to the <ul>
 
@@ -31,3 +32,31 @@ let menuItems = [
 
   Step 6: Use 'menuMaker' to create a menu using the 'menuItems' array, and append the returned menu to the header.
 */
+let container = document.querySelector(".header");
+function menuMaker(menu) {
+  let menuList = document.createElement("div");
+  let list = document.createElement("ul");
+  // let item = document.createElement("li");
+
+  menuList.classList.add("menu");
+  menuList.appendChild(list);
+
+  menu.forEach((i) => {
+    let item = document.createElement("li");
+    item.textContent = i;
+    list.appendChild(item);
+  });
+
+  let hamburger = document.querySelector("img");
+  // hamburger.addEventListener('click', () => menuList.classList.toggle('menu--open'))
+
+  hamburger.addEventListener("click", () =>
+    menuList.classList.toggle("menu--open")
+  );
+  console.log(menuList);
+  return menuList;
+}
+
+menuItems.forEach(() => container.appendChild(menuMaker(menuItems)));
+
+// console.log(menuMaker(menuItems))

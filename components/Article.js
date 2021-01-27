@@ -111,17 +111,10 @@ const data = [
     <span class="expandButton">+</span>
   </div>*/
 
- let container = document.querySelector('.articles')
-//  let artContainer = document.createElement('div')
-//   let h2 = document.createElement('h2')
-//   let p = document.createElement('p')
-//   let firstP = document.createElement('p')
-//   let secP = document.createElement('p')
-//   let thirdP = document.createElement('p')
-//   let span = document.createElement('span')
+let container = document.querySelector('.articles')
 
 
-function articleMaker(title,date,oneP,twoP,threeP) {
+function articleMaker(title, date, oneP, twoP, threeP) {
   // Adding elements
   let artContainer = document.createElement('div')
   let h2 = document.createElement('h2')
@@ -131,17 +124,20 @@ function articleMaker(title,date,oneP,twoP,threeP) {
   let thirdP = document.createElement('p')
   let span = document.createElement('span')
 
-  span.textContent = "+"
-  span.classList.add('expandButton')
-
-  span.addEventListener('hover')
-
   h2.textContent = title;
   p.textContent = date;
   firstP.textContent = oneP;
   secP.textContent = twoP;
   thirdP.textContent = threeP;
 
+  artContainer.classList.add('article')
+  p.classList.add('date')
+
+  span.textContent = "+"
+  span.classList.add('expandButton')
+  span.addEventListener('click', () => 
+    artContainer.classList.toggle('article-open')
+  )
 
   artContainer.appendChild(h2)
   artContainer.appendChild(p)
@@ -150,20 +146,22 @@ function articleMaker(title,date,oneP,twoP,threeP) {
   artContainer.appendChild(thirdP)
   artContainer.appendChild(span)
 
-  return artContainer 
+  return artContainer
 }
-  // Adding data
-  let articles = data.map((i) => { 
-    let article = articleMaker(i.title,i.date,i.firstParagraph,i.secondParagraph,i.thirdParagraph)
-    return article
-  })
+// Adding data
+// let articles = data.map((i) => {
+//   let article = articleMaker(i.title, i.date, i.firstParagraph, i.secondParagraph, i.thirdParagraph)
+//   return article
+// })
 
-  articles.forEach(article=>
-    container.append(article))
 
-let item = data.forEach((i) => { 
-  let artCont = articleMaker(i[i])
-  container.appendChild(artCont)})
+let item = data.forEach((i) => {
+  let artCont = articleMaker(i.title, i.date, i.firstParagraph, i.secondParagraph, i.thirdParagraph)
+  container.appendChild(artCont)
+})
+
+// articles.forEach(article =>
+//   container.appendChild(article))
 
 /* Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
  This listener should toggle the class 'article-open' on div.article.
